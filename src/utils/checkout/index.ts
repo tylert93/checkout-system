@@ -1,5 +1,6 @@
 import { PRODUCTS } from '@src/configuration/constants';
 import { ProductId, ProductInfo } from '@src/types';
+import formatCurrency from '@src/utils/formatCurrency';
 
 const checkout = (basket: ProductId[]) => {
   let total = 0;
@@ -10,7 +11,7 @@ const checkout = (basket: ProductId[]) => {
     total += costOfSingleProductType(arrayOfSingleProductType, productInfo);
   });
 
-  return `£${total}`;
+  return formatCurrency(total);
 };
 
 const costOfSingleProductType = (

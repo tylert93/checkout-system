@@ -32,13 +32,13 @@ const productListSeven = [
 ];
 
 it.each([
-  { products: productListOne, total: 0 },
-  { products: productListTwo, total: 0.6 },
-  { products: productListThree, total: 0.25 },
-  { products: productListFour, total: 0.85 },
-  { products: productListFive, total: 1.2 },
-  { products: productListSix, total: 1 },
-  { products: productListSeven, total: 1.95 },
+  { products: productListOne, total: '£0.00' },
+  { products: productListTwo, total: '£0.60' },
+  { products: productListThree, total: '£0.25' },
+  { products: productListFour, total: '£0.85' },
+  { products: productListFive, total: '£1.20' },
+  { products: productListSix, total: '£1.00' },
+  { products: productListSeven, total: '£1.95' },
 ])('Checkout should correctly calculate total %s', ({ products, total }) => {
-  expect(checkout(products)).toBe(`£${total}`);
+  expect(checkout(products)).toBe(total);
 });
