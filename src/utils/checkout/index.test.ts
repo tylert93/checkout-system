@@ -10,6 +10,23 @@ const productListFive = [
   ProductId.Apple,
   ProductId.Apple,
   ProductId.Apple,
+  ProductId.Apple,
+];
+
+const productListSix = [
+  ProductId.Orange,
+  ProductId.Orange,
+  ProductId.Orange,
+  ProductId.Orange,
+  ProductId.Orange,
+  ProductId.Orange,
+];
+const productListSeven = [
+  ProductId.Apple,
+  ProductId.Apple,
+  ProductId.Apple,
+  ProductId.Orange,
+  ProductId.Orange,
   ProductId.Orange,
   ProductId.Orange,
 ];
@@ -19,7 +36,9 @@ it.each([
   { products: productListTwo, total: 0.6 },
   { products: productListThree, total: 0.25 },
   { products: productListFour, total: 0.85 },
-  { products: productListFive, total: 2.3 },
+  { products: productListFive, total: 1.2 },
+  { products: productListSix, total: 1 },
+  { products: productListSeven, total: 1.95 },
 ])('Checkout should correctly calculate total %s', ({ products, total }) => {
   expect(checkout(products)).toBe(`£${total}`);
 });
