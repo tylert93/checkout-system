@@ -1,6 +1,6 @@
-import { PRODUCTS } from '@src/configuration/constants';
-import { ProductId, ProductInfo } from '@src/types';
-import formatCurrency from '@src/utils/formatCurrency';
+import { PRODUCTS } from '../../configuration/constants.js';
+import { ProductId, ProductInfo } from '../../types/index.js';
+import formatCurrency from '../../utils/formatCurrency/index.js';
 
 const checkout = (basket: ProductId[]) => {
   let total = 0;

@@ -1,4 +1,4 @@
-import { ProductId } from '@src/types';
+import { ProductId } from '../../types/index.js';
 
 import checkout from '.';
 
