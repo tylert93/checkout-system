@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,20 +9,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import inquirer from 'inquirer';
-import chalk from 'chalk';
-import { PRODUCTS } from './configuration/constants.js';
-import checkout from './utils/checkout/index.js';
+Object.defineProperty(exports, "__esModule", { value: true });
+const inquirer_1 = require("inquirer");
+const chalk_1 = require("chalk");
+const constants_js_1 = require("./configuration/constants.js");
+const index_js_1 = require("./utils/checkout/index.js");
 let currentProduct = null;
 let shoppingBasket = [];
-const availableProducts = PRODUCTS.map(({ id }) => id);
+const availableProducts = constants_js_1.PRODUCTS.map(({ id }) => id);
 const mainMenu = () => __awaiter(void 0, void 0, void 0, function* () {
     outputShoppingBasket();
     const choices = ['Scan item', 'Checkout'];
     if (shoppingBasket.length) {
         choices.push('Clear basket');
     }
-    const answer = yield inquirer.prompt({
+    const answer = yield inquirer_1.default.prompt({
         name: 'action',
         type: 'list',
         message: 'Which action would you like to take?',
@@ -39,7 +41,7 @@ const mainMenu = () => __awaiter(void 0, void 0, void 0, function* () {
     return mainMenu();
 });
 const selectProduct = () => __awaiter(void 0, void 0, void 0, function* () {
-    const answer = yield inquirer.prompt({
+    const answer = yield inquirer_1.default.prompt({
         name: 'product',
         type: 'list',
         message: 'Which product do you want to scan?',
@@ -49,7 +51,7 @@ const selectProduct = () => __awaiter(void 0, void 0, void 0, function* () {
     selectQuantity();
 });
 const selectQuantity = () => __awaiter(void 0, void 0, void 0, function* () {
-    const answer = yield inquirer.prompt({
+    const answer = yield inquirer_1.default.prompt({
         name: 'quantity',
         type: 'input',
         message: 'How many do you want to scan?',
@@ -81,7 +83,7 @@ const outputProductTotals = () => {
     });
 };
 const outputShoppingBasket = () => {
-    console.log(`\n   ${chalk.bold.cyan('Current shopping basket:')}`);
+    console.log(`\n   ${chalk_1.default.bold.cyan('Current shopping basket:')}`);
     if (shoppingBasket.length) {
         outputProductTotals();
     }
@@ -92,8 +94,8 @@ const outputShoppingBasket = () => {
 };
 const outputTotal = () => {
     console.log(`
-   ${chalk.bold.green('Amount payable:')}
-   ${chalk.bold(`${checkout(shoppingBasket)}`)}
+   ${chalk_1.default.bold.green('Amount payable:')}
+   ${chalk_1.default.bold(`${(0, index_js_1.default)(shoppingBasket)}`)}
     
     `);
 };

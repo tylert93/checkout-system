@@ -59,6 +59,16 @@ const selectQuantity = async () => {
     name: 'quantity',
     type: 'input',
     message: 'How many do you want to scan?',
+    validate: (answer) => {
+      if (isNaN(answer)) {
+        return 'please enter a number';
+      }
+
+      if (answer < 1) {
+        return 'please enter a number greater than 1';
+      }
+      return true;
+    },
   });
 
   addToBasket(answer.quantity);
@@ -80,7 +90,9 @@ const outputProductTotals = () => {
       (x) => x === product
     ).length;
 
-    console.log(`   ${product} (${numberInShoppingBasket})`);
+    if (numberInShoppingBasket > 0) {
+      console.log(`   ${product} (${numberInShoppingBasket})`);
+    }
   });
 };
 
